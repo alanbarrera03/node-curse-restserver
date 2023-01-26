@@ -76,13 +76,12 @@ const usersDelete = async (req, res = response) => {
 
     const { id } = req.params;
 
-    //Delete physically
-    // const user = await User.finByIdAndDelete( id );
-
     const user = await User.findByIdAndUpdate( id, { status: false} );
 
+    const userAuth = req.user;
 
-    res.json( user );
+
+    res.json( { user, userAuth } );
 }
 
 module.exports = {
