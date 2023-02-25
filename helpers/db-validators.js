@@ -1,5 +1,6 @@
 const Role = require('../models/role');
 const { User, Category, Product} = require('../models');
+const { collection } = require('../models/role');
 
 const isRoleValided = async( role = '' ) => {
 
@@ -46,6 +47,19 @@ const  existProductById = async( id ) => {
 
     }
 
+}
+
+const permittedCollections = ( collection = '', collections = [] ) => {
+
+    const include = collections.includes( collection );
+
+    if( !include ) {
+
+        throw new Error( `The collection ${ collection } not is permitted, ${ collections }` );
+
+    }
+
+    return true;
 
 }
 
@@ -54,5 +68,6 @@ module.exports = {
     isEmailValid,
     existUserById,
     existCategoryById,
-    existProductById
+    existProductById,
+    permittedCollections
 }

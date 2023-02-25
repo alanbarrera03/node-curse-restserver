@@ -43,7 +43,9 @@ const ProductSchema = Schema({
 
     description: { type: String },
 
-    available: { type: Boolean, default: true },
+    available:   { type: Boolean, default: true },
+
+    img:         { type: String },
 
 });
 
